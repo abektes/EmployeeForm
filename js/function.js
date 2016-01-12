@@ -1,5 +1,7 @@
 // Employee array
 
+var EmployeeList = []
+
 var Employee = function(id, name, birthday, age)
 {
     this.id = id;
@@ -9,7 +11,6 @@ var Employee = function(id, name, birthday, age)
 };
 
 
-
 function getAge()
 {
     var dt1 = document.getElementById('birthday').value;
@@ -17,25 +18,6 @@ function getAge()
     var age = age1.slice(0,2);
 
 }
-
-
-
-
-
-var employeeObject1 = new Employee('Ahmet',16/05/2010, 40);
-
-
-
-// moment.js age calculation
-
-
-    var dt1 = document.getElementById('EmployeeBirthday').value;
-    var years = moment().diff(dt1, 'years');
-
-
-    moment("16/05/1985", "DD/MM/YYYY").month(0).from(moment().month(0))
-
-
 
 
 /// average of an array ///
