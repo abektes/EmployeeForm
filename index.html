@@ -32,17 +32,17 @@
 
         <form id="form1">
             <div class="form-group">
-                <label for="employee.name">Name</label>
-                <input type="text" class="form-control" id="employee.name" placeholder="Name">
+                <label for="employeeName">Name</label>
+                <input type="text" class="form-control" id="employeeName" placeholder="Name">
             </div>
             <div class="form-group">
-                <label for="employee.birthday">Birthday</label>
+                <label for="employeeBirthday">Birthday</label>
                 <div class="input-group date">
-                    <input type="text" class="form-control" id="employee.birthday"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                    <input type="text" name="name" class="form-control" id="employeeBirthday"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary"  onclick="addEmployee()"> Add Employee</button>
+            <button id="Submitbtn1" type="submit" class="btn btn-primary"  onclick=""> Add Employee</button>
             <button type="submit" href= "#result" class="toggle btn btn-default"> Team Details </button>
 
         </form>
@@ -68,8 +68,6 @@
 </div>
     </div>
 
-
-<br>
 <hr>
 
 <div class="container">
@@ -103,7 +101,7 @@
 
 </div>
 
-
+<p id="test1"> </p>
 
 
 
@@ -140,6 +138,19 @@
             $(target).toggleClass('hidden show');
         });
 
+    });
+
+</script>
+
+<script>
+
+    $('#Submitbtn1').click(function () {
+        var EmployeeName = $("#employeeName").val();
+        var EmployeeBirthday = $("#employeeBirthday").val();
+
+        addEmployee();
+
+        $('#test1').text('You ' + EmployeeName + " on " + EmployeeBirthday);
     });
 
 </script>
