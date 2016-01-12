@@ -43,7 +43,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary"  onclick="addEmployee()"> Add Employee</button>
-            <button type="submit" href= "#result" class="toggle btn btn-default"></button>
+            <button type="submit" href= "#result" class="toggle btn btn-default"> Team Details </button>
 
         </form>
         </div>
@@ -105,7 +105,7 @@
 
 
 
-<p id="222"> </p>
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.12.0.min.js"></script>
@@ -117,6 +117,15 @@
 <script src="js/bootstrap-datepicker.min.js"></script>
 
 
+
+
+<script>
+
+    $('.input-group.date').datepicker({
+        format: "mm/dd/yyyy"
+    });
+
+</script>
 
 
 <!-- toggle button -->
@@ -133,14 +142,6 @@
 
     });
 
-</script>
-
-<script>
-
-    function myFunction() {
-        var x = document.getElementById("form1").action;
-        document.getElementById("222").innerHTML = x;
-    }
 </script>
 
 

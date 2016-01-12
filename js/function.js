@@ -42,9 +42,9 @@ var addEmployee = function (employee){
 }
 
 addEmployee(new Employee( 'Ahmet' , '05.15.1985'));
-addEmployee(new Employee( 'Hans' , '01.01.1980'));
-addEmployee(new Employee( 'Mike' , '03.03.1973'));
-addEmployee(new Employee( 'Stefano' , '03.03.1978'));
+addEmployee(new Employee( 'Hans' , '01.12.1975'));
+addEmployee(new Employee( 'Stefano' , '03.03.1990'));
+addEmployee(new Employee( 'Anne' , '09.11.1966'));
 
 
 console.log(employee_array);
@@ -64,7 +64,7 @@ for (var i = 0; i < employee_array.length; i++) {
 
 
     //checking young
-    if (employee_array[i].age < young || young === null)
+    if (employee_array[i].age < young.age || young === null)
         young = employee_array[i];
 }
 
