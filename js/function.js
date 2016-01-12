@@ -41,9 +41,11 @@ var addEmployee = function (employee){
     employee_array.push({ name: employee.name, birthday: employee.birthday, age: employee.age})
 }
 
-addEmployee(new Employee( 'ahmet' , '05.15.1985'));
-addEmployee(new Employee( 'caglar' , '01.01.1980'));
-addEmployee(new Employee( 'mehmet' , '03.03.1900'));
+addEmployee(new Employee( 'Ahmet' , '05.15.1985'));
+addEmployee(new Employee( 'Hans' , '01.01.1980'));
+addEmployee(new Employee( 'Mike' , '03.03.1973'));
+addEmployee(new Employee( 'Stefano' , '03.03.1978'));
+
 
 console.log(employee_array);
 document.getElementById("average").innerHTML = (calculateAverageAge(employee_array));
