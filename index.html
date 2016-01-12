@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/new.css" rel="stylesheet">
+    <link href="css/bootstrap-datepicker3.standalone.css" rel="stylesheet">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<br>
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-lg-push-3">
+
+        <form>
+            <div class="form-group">
+                <label for="EmployeeName">Name</label>
+                <input type="text" class="form-control" id="EmployeeName" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="EmployeeBirthday">Birthday</label>
+                <div class="input-group date">
+                    <input type="text" class="form-control" id="EmployeeBirthday"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" onclick="addRow()">Add Employee</button>
+            <button type="submit" class="btn btn-default">Calculate Average Age</button>
+
+        </form>
+        </div>
+
+    </div>
+
+</div>
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-lg-push-3 well">
+            <p class="text-center"> The average of age of the team is </p>
+            <h1 class="text-center"> 25 </h1>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-lg-push-3">
+            <h4> Employee List </h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-lg-push-3">
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Birthday</th>
+                    <th>Age</th>
+                </tr>
+                </thead>
+                <tbody class="table2">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>16.05.2013</td>
+                    <td>1 </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Ahmet</td>
+                    <td>16.9.2015</td>
+                    <td>11</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/function.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/moment-with-locales.js"></script>
+
+
+<script>
+
+    $('.input-group.date').datepicker({
+        format: "dd/mm/yyyy"
+    });
+
+</script>
+
+<script>
+
+    function addRow() {
+
+        var table = document.getElementById("table2");
+
+        var row= document.createElement("tr");
+        console.log(row);
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+
+        td1.innerHTML = document.getElementById("EmployeeName").value;
+        td2.innerHTML  = document.getElementById("EmployeeBirthday").value;
+        td3.innerHTML  = document.getElementById("EmployeeAge").value;
+
+        row.appendChild(td1);
+        row.appendChild(td2);
+        row.appendChild(td3);
+
+        table.children[0].appendChild(row);
+    };
+
+</script>
+
+</body>
+</html>
+
+
