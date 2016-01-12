@@ -1,39 +1,72 @@
-// Employee array
+var employee_array = [];
 
-var EmployeeList = []
+id = 0;
 
-var Employee = function(id, name, birthday, age)
+var Employee = function( name, birthday, age)
 {
-    this.id = id;
     this.name = name;
     this.birthday = birthday;
-    this.age = age;
+    this.age = getAge(birthday);
 };
 
+// there is not any age at first place as a value but it is depended on the
+// birthday.
 
-function getAge()
+function getAge(birthday)
 {
-    var dt1 = document.getElementById('birthday').value;
-    var age1 = moment(dt1, "DD/MM/YYYY").month(0).from(moment().month(0));
-    var age = age1.slice(0,2);
-
+    var today = new Date();
+    var birthDate = new Date(birthday);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
+    {
+        age--;
+    }
+    return age;
 }
 
 
-/// average of an array ///
+var calculateAverageAge = function(employees)
+{
+    var sum_age = 0;
+    employees.forEach(function(employee){
+        sum_age = sum_age + employee.age;
+    });
 
-var sum = 0;
-for( var i = 0; i < elmt.length; i++ ){
-    sum += parseInt( elmt[i], 10 ); //don't forget to add the base
+    return sum_age / employees.length;
 }
 
-var avg = sum/elmt.length;
 
-document.write( "The sum of all the ages is: " + sum + " The average age is: " + avg );
+var addEmployee = function (employee){
+    employee_array.push({ name: employee.name, birthday: employee.birthday, age: employee.age})
+}
+
+addEmployee(new Employee( 'ahmet' , '05.15.1985'));
+addEmployee(new Employee( 'caglar' , '01.01.1980'));
+addEmployee(new Employee( 'mehmet' , '03.03.1900'));
+
+console.log(employee_array);
+document.getElementById("average").innerHTML = (calculateAverageAge(employee_array));
 
 
-// Calculation of Age
+// low and high comparison of ages
+
+var old = employee_array[0];
+var young =  employee_array[0];
+
+//Start at 0 index, iterate until the array length, iterate by 1
+for (var i = 0; i < employee_array.length; i++) {
+    //checking old
+    if (employee_array[i].age > old.age)
+        old = employee_array[i];
 
 
+    //checking young
+    if (employee_array[i].age < young || young === null)
+        young = employee_array[i];
+}
 
+
+document.getElementById("young").innerHTML = (young.name)
+document.getElementById("old").innerHTML = (old.name)
 
