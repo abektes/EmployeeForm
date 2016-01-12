@@ -1,6 +1,29 @@
-/**
- * Created by ahmetbektes on 1/11/16.
- */
+// Employee array
+
+var Employee = function(id, name, birthday, age)
+{
+    this.id = id;
+    this.name = name;
+    this.birthday = birthday;
+    this.age = age;
+};
+
+
+
+function getAge()
+{
+    var dt1 = document.getElementById('birthday').value;
+    var age1 = moment(dt1, "DD/MM/YYYY").month(0).from(moment().month(0));
+    var age = age1.slice(0,2);
+
+}
+
+
+
+
+
+var employeeObject1 = new Employee('Ahmet',16/05/2010, 40);
+
 
 
 // moment.js age calculation
@@ -30,33 +53,5 @@ document.write( "The sum of all the ages is: " + sum + " The average age is: " +
 // Calculation of Age
 
 
-function getAge()
-{
-    var dt1 = document.getElementById('EmployeeBirthday').value;
-    var EmployeeAge = moment(dt1, "DD/MM/YYYY").month(0).from(moment().month(0))
-}
 
 
-
-// Employee Class
-
-function EmployeeList(id, objarray)
-{
-
-    this.id = id;   // data member that store a simple value
-    this.arrayname = objarray || []; //if objarray isn't passed it'll initiate an empty array
-}
-
-
-
-function Employee( id, EmployeeName, EmployeeBirthday, EmployeeAge)
-{
-    this.id = id;
-    this.EmployeeName = EmployeeName;
-    this.EmployeeBirthday = EmployeeBirthday;
-    this.EmployeeAge = EmployeeAge;
-}
-
-
-//or push the entire list at once
-var objA = new classA("01", objBarray);
