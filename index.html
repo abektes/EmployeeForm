@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Employee Template </title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -58,8 +58,13 @@
         <div class="col-lg-6 col-lg-push-3 well">
             <p class="text-center"> The average of age of the team is </p>
             <h1 class="text-center"> 25 </h1>
+            <hr>
+            <p class="text-center"> the oldest <em> Ahmet Bektes </em> </p>
+            <p class="text-center"> the youngest <em> Hem Bektes </em>  </p>
         </div>
-    </div>
+
+
+
 </div>
 
 
@@ -115,12 +120,15 @@
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.12.0.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/function.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
 <script src="js/moment-with-locales.js"></script>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="js/bootstrap-datepicker.min.js"></script>
+
+
 
 
 <script>
@@ -135,9 +143,10 @@
 
     function addRow() {
 
-        var table = document.getElementById("table2");
+        var table = document.getElementById("table");
 
         var row= document.createElement("tr");
+        var th = document.createElement("th");
         console.log(row);
         var td1 = document.createElement("td");
         var td2 = document.createElement("td");
@@ -145,7 +154,6 @@
 
         td1.innerHTML = document.getElementById("EmployeeName").value;
         td2.innerHTML  = document.getElementById("EmployeeBirthday").value;
-        td3.innerHTML  = document.getElementById("EmployeeAge").value;
 
         row.appendChild(td1);
         row.appendChild(td2);
