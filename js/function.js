@@ -70,3 +70,16 @@ for (var i = 0; i < employee_array.length; i++) {
 document.getElementById("young").innerHTML = (young.name)
 document.getElementById("old").innerHTML = (old.name)
 
+
+
+$(document).ready(function () {
+    var json = employee_array;
+    var tr;
+    for (var i = 0; i < json.length; i++) {
+        tr = $('<tr/>');
+        tr.append("<td>" + json[i].name + "</td>");
+        tr.append("<td>" + json[i].birthday + "</td>");
+        tr.append("<td>" + json[i].age + "</td>");
+        $('table').append(tr);
+    }
+});
