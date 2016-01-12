@@ -42,8 +42,8 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" onclick="addRow()">Add Employee</button>
-            <button type="submit" class="btn btn-default">Calculate Average Age</button>
+            <button type="submit" class="btn btn-primary"  onclick="addRow()"> Add Employee</button>
+            <button type="submit" href= "#result" class="toggle btn btn-default">Calculate Average Age</button>
 
         </form>
         </div>
@@ -53,7 +53,7 @@
 </div>
 <hr>
 
-<div class="container">
+<div id="result" class="container">
     <div class="row">
         <div class="col-lg-6 col-lg-push-3 well">
             <p class="text-center"> The average of age of the team is </p>
@@ -66,6 +66,7 @@
 
 
 </div>
+    </div>
 
 
 <br>
@@ -161,6 +162,22 @@
 
         table.children[0].appendChild(row);
     };
+
+</script>
+
+<!-- toggle button --> 
+
+<script>
+
+    $(function () {
+
+        $('.toggle').click(function (event) {
+            event.preventDefault();
+            var target = $(this).attr('href');
+            $(target).toggleClass('hidden show');
+        });
+
+    });
 
 </script>
 
