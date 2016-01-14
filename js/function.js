@@ -1,7 +1,8 @@
+
 var employee_array = [];
 
-id = 0;
 
+// Employee
 var Employee = function( name, birthday, age)
 {
     this.name = name;
@@ -9,79 +10,100 @@ var Employee = function( name, birthday, age)
     this.age = getAge(birthday);
 };
 
-// there is not any age at first place as a value but it is depended on the
-// birthday.
+// Youngest
+var findYoungest = function(){
 
-function getAge(birthday)
+    var youngest = employee_array[0];
+    for (var i = 0; i < employee_array.length; i++) {
+
+        if (employee_array[i].age < youngest.age || youngest === null)
+            youngest = employee_array[i];
+    }
+    return youngest;
+};
+// Oldest
+var findOldest = function(){
+
+    var oldest = employee_array[0];
+    for (var i = 0; i < employee_array.length; i++) {
+
+        if (employee_array[i].age > oldest.age || oldest === null)
+            oldest = employee_array[i];
+    }
+    return oldest;
+};
+
+// Age calculation - StackExchange
+var getAge = function(birthday)
 {
     var today = new Date();
     var birthDate = new Date(birthday);
     var age = today.getFullYear() - birthDate.getFullYear();
     var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
-    {
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
     }
     return age;
-}
+};
 
-
-var calculateAverageAge = function(employees)
+// Average Age of the team
+var calculateAverageAge = function()
 {
     var sum_age = 0;
-    employees.forEach(function(employee){
+    employee_array.forEach(function(employee){
         sum_age = sum_age + employee.age;
     });
 
-    return sum_age / employees.length;
-}
+    return sum_age / employee_array.length;
+};
+
+//Update
+var updateStatistics = function(){
+    document.getElementById("average").innerHTML = (calculateAverageAge());
+    document.getElementById("young").innerHTML = (findYoungest().name);
+    document.getElementById("old").innerHTML = (findOldest().name);
+};
 
 
-var addEmployee = function (employee){
-    employee_array.push({ name: employee.name, birthday: employee.birthday, age: employee.age})
-}
+// Table
+var addToEmployeeTable = function(employee){
+    var tr = $('<tr/>');
+    tr.append("<td>" + employee.name + "</td>");
+    tr.append("<td>" + employee.birthday + "</td>");
+    tr.append("<td>" + employee.age + "</td>");
+    $('.table').append(tr);
+};
 
-addEmployee(new Employee( 'Ahmet' , '05.15.1985'));
-addEmployee(new Employee( 'Hans' , '01.12.1975'));
-addEmployee(new Employee( 'Stefano' , '03.03.1990'));
-addEmployee(new Employee( 'Anne' , '09.11.1966'));
-
-
-console.log(employee_array);
-document.getElementById("average").innerHTML = (calculateAverageAge(employee_array));
-
-
-// low and high comparison of ages
-
-var old = employee_array[0];
-var young =  employee_array[0];
-
-//Start at 0 index, iterate until the array length, iterate by 1
-for (var i = 0; i < employee_array.length; i++) {
-    //checking old
-    if (employee_array[i].age > old.age)
-        old = employee_array[i];
-
-
-    //checking young
-    if (employee_array[i].age < young.age || young === null)
-        young = employee_array[i];
-}
-
-
-document.getElementById("young").innerHTML = (young.name)
-document.getElementById("old").innerHTML = (old.name)
-
-
+// Dummy Example
+employee_array.push(new Employee( 'Ahmet' , '05.15.1985'));
+employee_array.push(new Employee( 'Hans' , '01.12.1975'));
+employee_array.push(new Employee( 'Stefano' , '03.03.1990'));
+employee_array.push(new Employee( 'Anne' , '09.11.1966'));
 
 $(document).ready(function () {
-    var json = employee_array;
-    var tr;
-    for (var i = 0; i < json.length; i++) {
-        tr = $('<tr/>');
-        tr.append("<td>" + json[i].name + "</td>");
-        tr.append("<td>" + json[i].birthday + "</td>");
-        tr.append("<td>" + json[i].age + "</td>");
-        $('table').append(tr);
+
+    for (var i = 0; i < employee_array.length; i++) {
+        addToEmployeeTable(employee_array[i]);
     }
+    updateStatistics();
+});
+
+// Form1
+$(document).ready(function() {
+    $('#form1').on("submit", function(e) {
+        var name = $('#employeeName').val();
+        var birthday = $('#employeeBirthday').val();
+        var addedEmployee = new Employee(name , birthday);
+        employee_array.push(addedEmployee);
+        addToEmployeeTable(addedEmployee);
+        return false;
+    });
+});
+
+// Team Details
+$(document).ready(function() {
+    $("#team_details").click(function(){
+        updateStatistics();
+        return false;
+    });
 });
